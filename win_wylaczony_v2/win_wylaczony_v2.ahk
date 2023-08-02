@@ -43,7 +43,7 @@ czas() {
 	MyGui.Opt("+AlwaysOnTop -Caption +ToolWindow +Disabled")  ; +ToolWindow avoids a taskbar button and an alt-tab menu item.
 	MyGui.BackColor := "16AD1A"  ; Can be any RGB color (it will be made transparent below).
 	MyGui.SetFont("s50", "Consolas")  ; Set a large font size (32-point).
-    dzien1 := A_DD "." A_MM " " "poniedziałek"
+    dzien1 := A_DD "." A_MM " " A_DDDD
     MaxChar := 18
     dzien1 := FillLeft(dzien1, MaxChar, A_Space)
     CzasTrwaniaValue := floor(A_TickCount / 1000 / 3600) ":" Format("{:02}", round(mod(A_TickCount / 1000 / 60, 60), 0)) " godziny"

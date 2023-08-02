@@ -69,12 +69,11 @@ TekstCMD(Tekst, Time := 0) {
 	SendText Tekst
 	Send "{enter}"
 }
-:*:sendcmd::{
+:*:sendcmd::{ 
+	CommitMessage := InputBox("Podaj wiadomość do commita").value
 	Run "cmd.exe"
-	TekstCMD("cd ..", 500) 
-	TekstCMD("git commit -a")
-	MsgBox "Podaj wiadomość do commita",, "0"
-	WinActivate("ahk_exe cmd.exe")
+	TekstCMD("cd ..", 500)
+	TekstCMD('git commit -am "' CommitMessage '"', 1000)
 	TekstCMD("git push", 500)
 }
 :*:rnts::{
