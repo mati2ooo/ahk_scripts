@@ -3,13 +3,31 @@ Appskey:: return	; to jest praktycznie OG
 SetCapsLockState "AlwaysOff"
 `::Escape
 :X*:riload:: riload()
-Failsafe() { 
-	Run A_ScriptDir 
-	MsgBox "Wyłączyłeś Appskey :: Return !!!", , "T2.5"
+OnExit Failsafey 
+Failsafe() {
+	Run "C:\Users\Nowe Konto 2\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup"
+	;Gui +LastFound +OwnDialogs +AlwaysOnTop
+	MsgBox "Wyłączyłeś Appskey :: Return !!! v2 tho `;)", , "T1.5"
 	ExitApp
 }
-^+1:: Failsafe() ; FAILSAFE
+Failsafey(ExitReason, ExitCode)
+{
+	if (ExitReason != "Reload") and (ExitReason != "Exit") {
+	Run "C:\Users\Nowe Konto 2\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup"
+	;Gui +LastFound +OwnDialogs +AlwaysOnTop
+	MsgBox "Skrypt win_wylaczony_v2.ahk został nagle wyłączony!", , "T2.5"
+	return 0
+}}
+^+1:: Failsafe() 
 ^1:: Failsafe() 
+vke2::Shift
+wina(){ ; TU JEST WINEK JAK COŚ, POLECAM SIĘ 🤣
+	if not WinExist("ahk_exe Code.exe") {
+	Sleep 30
+	Run A_ScriptFullPath
+	MsgBox "Przyjąłem, cierpliwości...",, "T1.5" 
+	} else Run A_ScriptFullPath
+}
 OdpalEdytor(plik) {
 	Global Edytor, skrypt
 	Run '"' Edytor '" "' skrypt plik ".ahk" '"'  ; TEGO TRZEBA PILNOWAĆ, TO DLA NAS ZŁOTO
@@ -46,6 +64,18 @@ LaunchLang(jezyk1) {
 :X*:pzdun::Run '"' Edytor '" "' skrypt language "ZLANGhelp.ahk" '"' 
 
 :X*:cmda:: Run "cmd.exe"
+:*:aaa::{
+	Run "cmd.exe" 
+	Sleep 500 
+	SendText "cd .."
+	Send "{enter}"
+	Sleep 500
+	SendText "git commit -a"
+	Send "{enter}"
+	MsgBox "weź podaj wiadomość",, "0"
+	Sleep 2500
+	SendText "git push{enter}"
+}
 :*:rnts::{
 	Run skrypt 
 	WinWait "v2"
