@@ -64,19 +64,18 @@ LaunchLang(jezyk1) {
 :X*:pzdun::Run '"' Edytor '" "' skrypt language "ZLANGhelp.ahk" '"' 
 
 :X*:cmda:: Run "cmd.exe"
+TekstCMD(Tekst, Time := 0) {
+	Sleep Time
+	SendText Tekst
+	Send "{enter}"
+}
 :*:aaa::{
-	Run "cmd.exe" 
-	Sleep 500 
-	SendText "cd .."
-	Send "{enter}"
-	Sleep 500
-	SendText "git commit -a"
-	Send "{enter}"
-	MsgBox "weź podaj wiadomość",, "0"
+	Run "cmd.exe"
+	TekstCMD("cd ..", 500)
+	TekstCMD("git commit -a")
+	MsgBox "Podaj wiadomość do commita",, "0"
 	WinActivate("ahk_exe cmd.exe")
-	Sleep 500
-	SendText "git push"
-	Send "{enter}"
+	TekstCMD("git push", 500)
 }
 :*:rnts::{
 	Run skrypt 
