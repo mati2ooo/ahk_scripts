@@ -73,8 +73,10 @@ LaunchLang(jezyk1) {
 	SendText "git commit -a"
 	Send "{enter}"
 	MsgBox "weź podaj wiadomość",, "0"
-	Sleep 2500
-	SendText "git push{enter}"
+	WinActivate("ahk_exe cmd.exe")
+	Sleep 500
+	SendText "git push"
+	Send "{enter}"
 }
 :*:rnts::{
 	Run skrypt 
