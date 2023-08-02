@@ -69,9 +69,9 @@ TekstCMD(Tekst, Time := 0) {
 	SendText Tekst
 	Send "{enter}"
 }
-:*:aaa::{
+:*:sendcmd::{
 	Run "cmd.exe"
-	TekstCMD("cd ..", 500)
+	TekstCMD("cd ..", 500) 
 	TekstCMD("git commit -a")
 	MsgBox "Podaj wiadomość do commita",, "0"
 	WinActivate("ahk_exe cmd.exe")
@@ -79,9 +79,9 @@ TekstCMD(Tekst, Time := 0) {
 }
 :*:rnts::{
 	Run skrypt 
-	WinWait "v2"
-	;WinRestore "A" 
-	WinMove(700, 80,,, "v2")
+	WinWait "win_wylaczony_v2" 
+	WinRestore "win_wylaczony_v2" 
+	WinMove(850, 100,,, "win_wylaczony_v2")
 }
 
 :X*:diz::Run "C:\Users\Grzegorz\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Discord Inc\Discord.lnk"

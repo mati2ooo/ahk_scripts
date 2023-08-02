@@ -2,7 +2,7 @@
 ; Przydałoby się stworzyć oddzielny skrypt do zmieniania poniższych #Includów, aby przebiegało to jak najszybciej (że jest zmienna i to podmienia)
 skrypt := "C:\Users\Nowe Konto 2\Desktop\ahk_scripts\win_wylaczony_v2\" ; tam znajdują się wszelkie utworzone skrypty
 Edytor := "D:\Mati\Aplikacje\VSCode\Microsoft VS Code\Code.exe" ; zazwyczaj to będzie VSCode, ew. Notepad
-Editor_window := "ahk_exe Code.exe" ; nazwa okna edytora na którym działasz
+Editor_window := "ahk_exe Code.exe" ; nazwa okna edytora na którym działasz (przeważnie VSCode)
 
 win := A_ScriptFullPath
 emotki := "emotki.ahk" 
@@ -55,6 +55,7 @@ czas() {
 	WinSetTransColor(MyGui.BackColor " 150", MyGui)
 	SetTimer(UpdateOSD, 1000)
 	UpdateOSD()  ; Make the first update immediate rather than waiting for the timer.
+    MyGui.Title := "CzasDzien" 
 	MyGui.Show("x01150 y800 AutoSize NA")  ; NoActivate avoids deactivating the currently active window, pierwsze dwie zmienne to są koordynaty gdzie jest umieszczony tekst
 UpdateOSD(*) 
 {
