@@ -14,12 +14,6 @@ AHK_Doc := skrypt "AutoHotkey.chm" ; AutoHotkey Documentation
 if (A_AhkVersion != "2.0.4")
     MsgBox "Uwaga - nie wykryłem wersji AHK v2.0.4. [2nd August 2023] Miej się na baczności"
 
-#HotIf WinActive("ahk_exe msedge.exe")
-Ctrl & Shift::Return
-:X*:monkye::Send "onkeytype.com{Enter}"
-:X*:notki::Run "https://app.clickup.com/9005089362/home"
-
-
 czas()
 version() {
 	MyGui := Gui()
@@ -48,8 +42,8 @@ czas() {
     dzien1 := FillLeft(dzien1, MaxChar, A_Space)
     CzasTrwaniaValue := floor(A_TickCount / 1000 / 3600) ":" Format("{:02}", round(mod(A_TickCount / 1000 / 60, 60), 0)) " godziny"
     CzasTrwaniaValue := FillLeft(CzasTrwaniaValue, MaxChar, A_Space)
-    CzasTrwania := MyGui.Add("Text", "cLime Right", CzasTrwaniaValue)  ; XX & YY serve to auto-size the window.
-    DzienPokaż := MyGui.Add("Text", "cLime Right", dzien1)  ; XX & YY serve to auto-size the window.
+    CzasTrwania := MyGui.Add("Text", "c1c83d2 Right", CzasTrwaniaValue)  ; XX & YY serve to auto-size the window.
+    DzienPokaż := MyGui.Add("Text", "c3055cc Right", dzien1)  ; XX & YY serve to auto-size the window.
     ;AktualnyCzas := MyGui.Add("Text", "cLime", "XXXXXXXXXXXXXX YY")  ; XX & YY serve to auto-size the window.
 	; Make all pixels of this color transparent and make the text itself translucent (150):
 	WinSetTransColor(MyGui.BackColor " 150", MyGui)

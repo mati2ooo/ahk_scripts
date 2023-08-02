@@ -70,11 +70,16 @@ TekstCMD(Tekst, Time := 0) {
 	Send "{enter}"
 }
 :*:sendcmd::{ 
-	CommitMessage := InputBox("Podaj wiadomość do commita").value
-	Run "cmd.exe"
-	TekstCMD("cd ..", 500)
-	TekstCMD('git commit -am "' CommitMessage '"', 1000)
-	TekstCMD("git push", 500)
+	CommitMessage := InputBox("Podaj wiadomość do commita",, "W150 H100")
+	if CommitMessage.Result = "Cancel" 
+		MsgBox "Anulowałeś polecenie", , "T0.45"
+	else {
+		Run "cmd.exe"
+		TekstCMD("cd ..", 500)
+		TekstCMD('git commit -am "' CommitMessage.Value '"', 1000)
+		TekstCMD("git push", 500)
+		TekstCMD("exit", 500)
+	} 
 }
 :*:rnts::{
 	Run skrypt 
@@ -224,6 +229,10 @@ EWD_MoveWindow(*)
         EWD_MouseStartY := EWD_MouseY
     }
 }
+:X*:notki::Run "https://app.clickup.com/9005089362/home" 
+#HotIf WinActive("ahk_exe msedge.exe")
+Ctrl & Shift::Return
+:X*:monkye::Send "monkeytype.com{Enter}"
 
 /*
 #HotIf WinActive("Minecraft 1.20.1 - Multiplayer (3rd-party Server)")
