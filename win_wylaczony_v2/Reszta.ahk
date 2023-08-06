@@ -22,28 +22,25 @@ Failsafey(ExitReason, ExitCode)
 ^1:: Failsafe() 
 vke2::Shift
 wina(){ ; TU JEST WINEK JAK COŚ, POLECAM SIĘ 🤣
+	Global Edytor
 	if not WinExist("ahk_exe Code.exe") {
 	Sleep 30
-	Run A_ScriptFullPath
+	Run '"' Edytor '" "' win '"' 
 	MsgBox "Przyjąłem, cierpliwości...",, "T1.5" 
-	} else Run A_ScriptFullPath
+	} else Run '"' Edytor '" "' win '"' 
 }
 OdpalEdytor(plik) {
 	Global Edytor, skrypt
 	Run '"' Edytor '" "' skrypt plik ".ahk" '"'  ; TEGO TRZEBA PILNOWAĆ, TO DLA NAS ZŁOTO
 }
-OdpalWina() {
-	Global Edytor
-	Run '"' Edytor '" "' win '"' 
-} 
-:XC*:winw:: OdpalWina()
-:XC*:wniw:: OdpalWina()
-:XC*:nsln:: OdpalWina()  ; winw for QWERTY
+:XC*:winw:: wina() 
+:XC*:wniw:: wina() 
+:XC*:nsln:: wina()   ; winw for QWERTY
 :X*:emota:: OdpalEdytor("emotki") 
 :X*:reshta:: OdpalEdytor("Reszta")
 :X*:notipad:: OdpalEdytor("Notipad")
-:X*:plove:: OdpalEdytor("polen")
-:X*:pmas:: OdpalEdytor("mouse") 
+:X*:plove:: OdpalEdytor("polen") 
+:X*:pmas:: OdpalEdytor("mouse")
 LaunchApp(app) {
 	Run skrypt app ".ahk"
 }
@@ -53,17 +50,17 @@ LaunchApp(app) {
 LaunchLang(jezyk1) {
 	Run skrypt language jezyk1 ".ahk"
 }
-:X*:ppol::LaunchLang("polen")
-:X*:pdun::LaunchLang("dunski")
+:X*:ppol:: LaunchLang("polen")
+:X*:pdun:: LaunchLang("dunski")
 :X*:pwlos::LaunchLang("wloski")
-:X*:pger::LaunchLang("german")
-:X*:ppor::LaunchLang("portu")
-:X*:pgre::LaunchLang("greek")
+:X*:pger:: LaunchLang("german")
+:X*:ppor:: LaunchLang("portu")
+:X*:pgre:: LaunchLang("greek")
 :X*:pross::LaunchLang("ruski")
 :X*:pruss::LaunchLang("ruski")
 :X*:pzdun::Run '"' Edytor '" "' skrypt language "ZLANGhelp.ahk" '"' 
 
-:X*:cmda:: Run "cmd.exe"
+:X*:cmda:: Run "cmd.exe" 
 TekstCMD(Tekst, Time := 0) {
 	Sleep Time
 	SendText Tekst
@@ -229,9 +226,9 @@ EWD_MoveWindow(*)
         EWD_MouseStartY := EWD_MouseY
     }
 }
-:X*:notki::Run "https://app.clickup.com/9005089362/home" 
+:X*:notkii::Run "https://app.clickup.com/9005089362/home" 
 #HotIf WinActive("ahk_exe msedge.exe")
-Ctrl & Shift::Return
+Ctrl & Shift::Return 
 :X*:monkye::Send "monkeytype.com{Enter}"
 
 /*

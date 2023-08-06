@@ -8,7 +8,7 @@
 	} } 
 	emotka := InputBox("Podaj hotstringa dla " A_Clipboard,, "W150 H100")
 	if emotka.Result = "Cancel" 
-		MsgBox "Anulowałeś polecenie", , "T0.45"
+		MsgBox "Anulowaś polecenie", , "T0.45"
 	else 
 		FileAppend "`n:*:" emotka.Value "::" A_Clipboard, "skrypt emotki"
 	Reload 

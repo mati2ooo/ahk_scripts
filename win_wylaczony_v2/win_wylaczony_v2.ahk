@@ -14,7 +14,7 @@ AHK_Doc := skrypt "AutoHotkey.chm" ; AutoHotkey Documentation
 if (A_AhkVersion != "2.0.4")
     MsgBox "Uwaga - nie wykryłem wersji AHK v2.0.4. [2nd August 2023] Miej się na baczności"
 
-czas()
+;czas()
 version() {
 	MyGui := Gui()
 	MyGui.Opt("+AlwaysOnTop -Caption +ToolWindow")  ; +ToolWindow avoids a taskbar button and an alt-tab menu item.
