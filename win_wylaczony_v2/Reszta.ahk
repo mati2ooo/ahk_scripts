@@ -60,7 +60,7 @@ LaunchLang(jezyk1) {
 :X*:pruss::LaunchLang("ruski")
 :X*:pzdun::Run '"' Edytor '" "' skrypt language "ZLANGhelp.ahk" '"' 
 
-:X*:cmda:: Run "cmd.exe" 
+:X*:cmda:: Run "cmd.exe"  
 TekstCMD(Tekst, Time := 0) {
 	Sleep Time
 	SendText Tekst

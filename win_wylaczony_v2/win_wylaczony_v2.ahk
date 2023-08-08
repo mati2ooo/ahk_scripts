@@ -62,8 +62,8 @@ UpdateOSD(*)
 
 #SingleInstance Force
 #Hotstring EndChars `n
-#Hotstring NoMouse
-TraySetIcon "Shell32.dll", 170
+#Hotstring NoMouse 
+TraySetIcon "Shell32.dll", 199
 #Requires AutoHotkey v2.0.0
 #Include C:\Users\Nowe Konto 2\Desktop\ahk_scripts\win_wylaczony_v2\
 #Include emotki.ahk
