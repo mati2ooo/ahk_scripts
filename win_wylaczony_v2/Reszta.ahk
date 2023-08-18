@@ -91,7 +91,7 @@ TekstCMD(Tekst, Time := 0) {
 launch_time := A_Hour ":" A_Min ; e.g "via BEAKL at 15:49"
 ^p:: MsgBox "via BEAKL at " launch_time
 ^o:: MsgBox "via QWERTY at " launch_time
-/* 
+
 \:: {	; służy do pozyskiwania pozycji kursora oraz koloru piksela
 	;CoordMode "Mouse", "Screen" ; bazowo jest na okno
 	MouseGetPos &xpos, &ypos
@@ -107,7 +107,6 @@ launch_time := A_Hour ":" A_Min ; e.g "via BEAKL at 15:49"
 	Sleep 100
 	MouseMove 350, 590	; przemieszcza kursor na edytorze
 }
-*/
 
 :*:hiea:: {  
 	if not WinExist("ahk_class HH Parent") {

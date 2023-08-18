@@ -10,7 +10,7 @@
 	if emotka.Result = "Cancel" 
 		MsgBox "Anulowaś polecenie", , "T0.45"
 	else 
-		FileAppend "`n:*:" emotka.Value "::" A_Clipboard, "skrypt emotki"
+		FileAppend "`n:*:" emotka.Value "::" A_Clipboard, emotki
 	Reload 
 }  
 :T*:hthin:: :thinking~1:
@@ -23,39 +23,39 @@
 :*:3dot::…
 :*:echev::» «
 :?*:duzo1::duzomaili1@interia.pl
-:?*:duzo5::duzomaili5@interia.pl 
+:?*:duzo5::duzomaili5@interia.pl
 ; Japońskie znaczki
 :*:kudasai::ください
 :*:shitteiru::知っている
 :*:watashi::私
 :*:ethin::🤔
 :*:ejoy::😂
+:*:erolf::🤣
 :*:esun::😎
 :*:oky::👌
+:*:esweat::😅
 :*:etear::😥
 :*:etir::😢
-:*:erolf::🤣
+:*:ethank::🤗
+:*:eharts::🥰
+:*:esmoke::😤
+:*:eposag::🗿
 :*:efries::🍟
 :*:e100::💯
-:*:eclown::🤡 
 :*:efire::🔥
 :*:eheart::❤️
 :*:elove::❤️
-:*:esweat::😅
+:*:eclown::🤡 
 :*:ewhat::❓
 :*:ewave::👋
 :*:eangry::😡
 :*:efrozen::🥶 
 :*:esmug::😨
-:*:ethank::🤗
 :*:esalt::🧂
-:*:eposag::🗿
 :*:eapple::🍎
 :*:eburger::🍔
 :*:edonut::🍩
 :*:ebeer::🍺
-:*:eharts::🥰
-:*:esmoke::😤
 :*:efrozen::🥶
 :*:ehot::🥵
 :*:epump::🎃
