@@ -62,17 +62,49 @@ UpdateOSD(*)
     ;AktualnyCzas.Value := "          " godzinas
 }
 }
-]::WinSetStyle "-0xC40000", "A"
 
 Toogle := 0
 #MaxThreadsPerHotkey 2
-:*:2z::{
+;vke2::Shift
+vke2::{
 	global Toogle
 	Toogle := !Toogle
 	while Toogle {
-		Click 1698, 807
+		Click 1400, 644
 		Sleep 100
 	}
+}
+
+:X*:genshina::Run "D:\Mati\Gry\Epic Games\GenshinImpact\launcher.exe"
+:X*:soundup::SoundSetVolume "+3" 
+
+text := 
+(
+"
+OK_LayoutBegin
+Name:BEAKL422RU
+1234567890[]
+цыоуьшглпя;=
+хиеаждстнр-
+з.,к/вчмбй––
+<>#$%^&*(){}
+ЦЫОУЬШГЛПЯ:+
+ХИЕАЖДСТНР
+З.,К/ВЧМБЙ––
+x
+x
+x
+x
+1234567890[]
+цыюуъщщлпя;=
+хиёафдстнр-
+э.,к/вчмбй––
+OK_Layout_End
+"
+)
+:*:aaaeaee::{
+	global text
+	A_Clipboard := RegExReplace(Text, " ", "") ; RegExReplace
 }
 
 #SingleInstance Force

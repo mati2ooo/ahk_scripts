@@ -56,8 +56,8 @@ LaunchLang(jezyk1) {
 :X*:pger:: LaunchLang("german")
 :X*:ppor:: LaunchLang("portu")
 :X*:pgre:: LaunchLang("greek")
-:X*:pross::LaunchLang("ruski")
-:X*:pruss::LaunchLang("ruski")
+:X*:prou::LaunchLang("ruski")
+:X*:pruss::LaunchLang("ruski") 
 :X*:pzdun::Run '"' Edytor '" "' skrypt language "ZLANGhelp.ahk" '"' 
 
 :X*:cmda:: Run "cmd.exe"  
@@ -65,7 +65,7 @@ TekstCMD(Tekst, Time := 0) {
 	Sleep Time
 	SendText Tekst
 	Send "{enter}"
-}
+} 
 :*:sendcmd::{ 
 	CommitMessage := InputBox("Podaj wiadomość do commita",, "W150 H100")
 	if CommitMessage.Result = "Cancel" 
@@ -250,4 +250,7 @@ u::{
     Sleep 100
     Send "/sellall{enter}"
 }
+  x y o u '  v g l p q ; =
+  h i e a f  d s t n r -  rtns rtns rstn 
+  z . , k /  w c m b j   
 */

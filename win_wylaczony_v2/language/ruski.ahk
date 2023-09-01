@@ -9,8 +9,13 @@ v::ш
 g::г
 l::л
 p::п
-q::q
+q::я
 
+/*
+  ц ы о у ь  ш г л п я ; =
+  х и е а ж  д с т н р -  
+  з . , к /  в ч м б й   
+  */
 h::х
 i::и
 e::е
@@ -40,6 +45,11 @@ j::й
 ^f::ф
 
 :*:123::{
+    Sleep 20
+    MsgBox A_ScriptName " OFF",, "T0.3"
+    ExitApp
+}
+:*:пкилл::{ 
     Sleep 20
     MsgBox A_ScriptName " OFF",, "T0.3"
     ExitApp

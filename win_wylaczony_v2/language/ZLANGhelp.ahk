@@ -18,7 +18,7 @@ WinSetStyle "-0xC00000", "A"
 Sleep 30
 WinActivate(goBack)
 
-:*:pkill::{
+:?*:pkill::{
     Sleep 20
     MsgBox A_ScriptName " OFF",, "T0.3"
     ExitApp
