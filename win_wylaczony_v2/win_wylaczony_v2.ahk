@@ -14,98 +14,55 @@ AHK_Doc := skrypt "AutoHotkey.chm" ; AutoHotkey Documentation
 if (A_AhkVersion != "2.0.4")
     MsgBox "Uwaga - nie wykryłem wersji AHK v2.0.4. [8th August 2023] Miej się na baczności"
 
-:X*:godouu::Run "D:\Mati\Aplikacje\GODOT\Godot_v4.1.1-stable_win64.exe"
-
-;czas()
-version() {
-	MyGui := Gui()
-	MyGui.Opt("+AlwaysOnTop -Caption +ToolWindow")  ; +ToolWindow avoids a taskbar button and an alt-tab menu item.
-	MyGui.BackColor := "FAFA00"  ; Can be any RGB color (it will be made transparent below).
-	MyGui.SetFont("s50")  ; Set a large font size (32-point).
-	CoordText3 := MyGui.Add("Text", "cYellow", "XXXXXXXXXXXXXX YY")  ; XX & YY serve to auto-size the window.
-	CoordText3.Value := " win_w " A_Hour ":" A_Min
-	; Make all pixels of this color transparent and make the text itself translucent (150):
-	WinSetTransColor(MyGui.BackColor " 230", MyGui)
-	MyGui.Show("x01450 y50 NoActivate")  ; NoActivate avoids deactivating the currently active window, pierwsze dwie zmienne to są koordynaty gdzie jest umieszczony tekst
-}
-FillLeft(Text, Width, Character) {
-    Length := StrLen(Text)
-    Loop Width - Length
-    Text := Character Text
-    Return Text
-}
-czas() {
-	MyGui := Gui()
-	MyGui.Opt("+AlwaysOnTop -Caption +ToolWindow +Disabled")  ; +ToolWindow avoids a taskbar button and an alt-tab menu item.
-	MyGui.BackColor := "16AD1A"  ; Can be any RGB color (it will be made transparent below).
-	MyGui.SetFont("s50", "Consolas")  ; Set a large font size (32-point).
-    CzasDzien := A_DD "." A_MM " " A_DDDD
-    MaxChar := 18
-    CzasDzien := FillLeft(CzasDzien, MaxChar, A_Space)
-    CzasTrwaniaValue := floor(A_TickCount / 1000 / 3600) ":" Format("{:02}", round(mod(A_TickCount / 1000 / 60, 60), 0)) " godziny"
-    CzasTrwaniaValue := FillLeft(CzasTrwaniaValue, MaxChar, A_Space)
-	KolorTekstu := "c05ff22 Right"
-    CzasTrwania := MyGui.Add("Text", KolorTekstu, CzasTrwaniaValue)  ; XX & YY serve to auto-size the window.
-    DzienPokaż := MyGui.Add("Text", KolorTekstu, CzasDzien)  ; XX & YY serve to auto-size the window.
-    ;AktualnyCzas := MyGui.Add("Text", "cLime", "XXXXXXXXXXXXXX YY")  ; XX & YY serve to auto-size the window.
-	; Make all pixels of this color transparent and make the text itself translucent (150):
-	WinSetTransColor(MyGui.BackColor " 150", MyGui)
-	SetTimer(UpdateOSD, 1000)
-	UpdateOSD()  ; Make the first update immediate rather than waiting for the timer.
-    MyGui.Title := "CzasDzien" 
-	MyGui.Show("x01150 y800 AutoSize NA")  ; NoActivate avoids deactivating the currently active window, pierwsze dwie zmienne to są koordynaty gdzie jest umieszczony tekst
-UpdateOSD(*) 
-{
-	godzinas := "" A_Hour ":" A_Min ":" A_Sec
-	CzasTrwania.Value := floor(A_TickCount / 1000 / 3600) ":" Format("{:02}", round(mod(A_TickCount / 1000 / 60, 60), 0)) " godziny"
-	;Dzien.Value := A_DD "." A_MM " " A_DDDD
-    ;AktualnyCzas.Value := "          " godzinas
-}
-}
-
-Toogle := 0
-#MaxThreadsPerHotkey 2
-;vke2::Shift
-vke2::{
-	global Toogle
-	Toogle := !Toogle
-	while Toogle {
-		Click 1400, 644
-		Sleep 100
+:Xb0*:BEAKL::Send " (Balanced Effortless Advanced Keyboard Layout)"
+start := [A_Hour, A_Min, A_Sec]
+~z::{
+	global start
+	if PixelSearch(&Px, &Py, 670, 410, 670, 460, 0x303343, 3) {
+		odcinek := [A_Hour, A_Min, A_Sec]
+		start2 := [A_Hour, A_Min, A_Sec]
+		czas := odcinek[1] * 3600 + odcinek[2] * 60 + odcinek[3] - (start[1] * 3600 + start[2] * 60 + start[3])
+		if (czas > 60)
+			czas := floor(czas / 60) ":" Format("{:02}", ceil(mod(czas, 60)))
+		else czas := "0:" Format("{:02}", czas)
+		Send "{Enter}"
+		MsgBox czas,, "T3"
+		Shifto()
+		start := start2
 	}
+	
 }
 
-:X*:genshina::Run "D:\Mati\Gry\Epic Games\GenshinImpact\launcher.exe"
-:X*:soundup::SoundSetVolume "+3" 
-
-text := 
-(
-"
-OK_LayoutBegin
-Name:BEAKL422RU
-1234567890[]
-цыоуьшглпя;=
-хиеаждстнр-
-з.,к/вчмбй––
-<>#$%^&*(){}
-ЦЫОУЬШГЛПЯ:+
-ХИЕАЖДСТНР
-З.,К/ВЧМБЙ––
-x
-x
-x
-x
-1234567890[]
-цыюуъщщлпя;=
-хиёафдстнр-
-э.,к/вчмбй––
-OK_Layout_End
-"
-)
-:*:aaaeaee::{
-	global text
-	A_Clipboard := RegExReplace(Text, " ", "") ; RegExReplace
-}
+nawache() {
+	ile := InputBox("Ile wyścigów chcesz porobić?")
+    if ile.result = "Cancel" { 
+		MsgBox "Anulowałeś polecenie", , "T0.45"
+		Return
+	} 
+	start := [A_Hour, A_Min, A_Sec]
+	Loop {
+		if (A_Index > ile.value) {
+			Loop {
+				if PixelSearch(&Px, &Py, 609, 449, 609, 450, 0x303343, 5) {
+					odcinek := [A_Hour, A_Min, A_Sec]
+					czas := odcinek[1] * 3600 + odcinek[2] * 60 + odcinek[3] - (start[1] * 3600 + start[2] * 60 + start[3])
+					średnio := floor(czas / ile.value)
+					if (czas > 60)
+						czas := floor(czas / 60) ":" Format("{:02}", ceil(mod(czas, 60)))
+					else czas := "0:" Format("{:02}", czas)
+					if (średnio > 60)
+						średnio := floor(średnio / 60) ":" Format("{:02}", ceil(mod(średnio, 60)))
+					else średnio := "0:" Format("{:02}", średnio)
+					MsgBox "Finalnie wykonałeś " ile.value " wyścigów. W sumie Ci to zajęło: " czas " minut, średnio na wyścig: " średnio " minut"
+					return
+				} } }
+		licz := A_Index - 1
+		Loop {
+			if PixelSearch(&Px, &Py, 609, 449, 609, 450, 0x303343, 5) {
+				;starcik(licz, ile.value, start)
+				Sleep 25000
+				break
+			} } } }
 
 #SingleInstance Force
 #Hotstring EndChars `n

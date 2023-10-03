@@ -20,7 +20,7 @@ Failsafey(ExitReason, ExitCode)
 }}
 ^+1:: Failsafe() 
 ^1:: Failsafe() 
-vke2::Shift
+vke2::Ctrl
 wina(){ ; TU JEST WINEK JAK COŚ, POLECAM SIĘ 🤣
 	Global Edytor
 	if not WinExist("ahk_exe Code.exe") {
@@ -40,7 +40,7 @@ OdpalEdytor(plik) {
 :X*:reshta:: OdpalEdytor("Reszta")
 :X*:notipad:: OdpalEdytor("Notipad")
 :X*:plove:: OdpalEdytor("polen") 
-:X*:pmas:: OdpalEdytor("mouse")
+:X*:pmas:: OdpalEdytor("mouse") 
 LaunchApp(app) {
 	Run skrypt app ".ahk"
 }
@@ -56,8 +56,9 @@ LaunchLang(jezyk1) {
 :X*:pger:: LaunchLang("german")
 :X*:ppor:: LaunchLang("portu")
 :X*:pgre:: LaunchLang("greek")
-:X*:prou::LaunchLang("ruski")
-:X*:pruss::LaunchLang("ruski") 
+:X*:prou:: LaunchLang("ruski")
+:X*:pruss::LaunchLang("ruski")
+:X*:pfre::LaunchLang("french") 
 :X*:pzdun::Run '"' Edytor '" "' skrypt language "ZLANGhelp.ahk" '"' 
 
 :X*:cmda:: Run "cmd.exe"  
@@ -65,7 +66,7 @@ TekstCMD(Tekst, Time := 0) {
 	Sleep Time
 	SendText Tekst
 	Send "{enter}"
-} 
+}
 :*:sendcmd::{ 
 	CommitMessage := InputBox("Podaj wiadomość do commita",, "W150 H100")
 	if CommitMessage.Result = "Cancel" 
@@ -74,7 +75,7 @@ TekstCMD(Tekst, Time := 0) {
 		Run "cmd.exe"
 		TekstCMD("cd ..", 500)
 		TekstCMD('git commit -am "' CommitMessage.Value '"', 1000)
-		TekstCMD("git push", 500)
+		TekstCMD("git push", 500) 
 		TekstCMD("exit", 500)
 	} 
 }
@@ -91,16 +92,15 @@ TekstCMD(Tekst, Time := 0) {
 launch_time := A_Hour ":" A_Min ; e.g "via BEAKL at 15:49"
 ^p:: MsgBox "via BEAKL at " launch_time
 ^o:: MsgBox "via QWERTY at " launch_time
-
+^q:: MsgBox "Current AHK v2 version: " A_AhkVersion
 \:: {	; służy do pozyskiwania pozycji kursora oraz koloru piksela
 	;CoordMode "Mouse", "Screen" ; bazowo jest na okno
 	MouseGetPos &xpos, &ypos
 	Kolorek := PixelGetColor(xpos, ypos)
-	;A_Clipboard := xpos ", " ypos ", " '"' Kolorek '"'
-	A_Clipboard := xpos ", " ypos
+	A_Clipboard := xpos ", " ypos ", " '"' Kolorek '"'  ; tam średnik jest, pamiętaj o nim
 	CoordMode "Mouse", "Window"
 	if not WinExist(Editor_window) {
-		Run win
+		wina()
 		WinWait Editor_window
 		WinActivate Editor_window
 	} else WinActivate Editor_window 
@@ -159,6 +159,7 @@ gemail(cyfra) {
 :X*:klipi::Msgbox A_Clipboard, "What's in Clipboard"  
 :T?b0*:matimon::tfa@gmail.com 
 :T?b0*:mat.k::luczyk@gmail.com
+:X?*:dyskgoogle::Send "https://drive.google.com/drive/u/0/my-drive?hl=pl{enter}"
 :X*:volium::MsgBox "Master volume is at " Round(SoundGetVolume(), 0) " percent." 
 :X*:dataa::Send "[" A_DD "." A_MM ", godz. " A_Hour ":" A_Min "]"
 
@@ -171,7 +172,7 @@ gemail(cyfra) {
 Shifto(tool := 0) {
 	CoordMode "ToolTip", "Screen"
 	If (tool = 0)
-		ToolTip "Shift ON", 690, 460
+		ToolTip "Shift ON", 690, 540
 	Send "{Shift down}"
 	key := InputHook("L1, *")
 	key.Start()
@@ -180,7 +181,6 @@ Shifto(tool := 0) {
 	ToolTip
 	Send "{Shift up}"
 }
-vke2::Shift
 #MaxThreadsPerHotkey 2 
 RShift:: Shifto()
 :XB0*?:. ::Shifto(1)
@@ -230,6 +230,99 @@ EWD_MoveWindow(*)
 Ctrl & Shift::Return 
 :X*:monkye::Send "monkeytype.com{Enter}"
 
+:X*:godouu::Run "D:\Mati\Aplikacje\GODOT\Godot_v4.1.1-stable_win64.exe"
+
+;czas()
+version() {
+	MyGui := Gui()
+	MyGui.Opt("+AlwaysOnTop -Caption +ToolWindow")  ; +ToolWindow avoids a taskbar button and an alt-tab menu item.
+	MyGui.BackColor := "FAFA00"  ; Can be any RGB color (it will be made transparent below).
+	MyGui.SetFont("s50")  ; Set a large font size (32-point).
+	CoordText3 := MyGui.Add("Text", "cYellow", "XXXXXXXXXXXXXX YY")  ; XX & YY serve to auto-size the window.
+	CoordText3.Value := " win_w " A_Hour ":" A_Min
+	; Make all pixels of this color transparent and make the text itself translucent (150):
+	WinSetTransColor(MyGui.BackColor " 230", MyGui)
+	MyGui.Show("x01450 y50 NoActivate")  ; NoActivate avoids deactivating the currently active window, pierwsze dwie zmienne to są koordynaty gdzie jest umieszczony tekst
+}
+FillLeft(Text, Width, Character) {
+    Length := StrLen(Text)
+    Loop Width - Length
+    Text := Character Text
+    Return Text
+}
+czas() {
+	MyGui := Gui()
+	MyGui.Opt("+AlwaysOnTop -Caption +ToolWindow +Disabled")  ; +ToolWindow avoids a taskbar button and an alt-tab menu item.
+	MyGui.BackColor := "16AD1A"  ; Can be any RGB color (it will be made transparent below).
+	MyGui.SetFont("s50", "Consolas")  ; Set a large font size (32-point).
+    CzasDzien := A_DD "." A_MM " " A_DDDD
+    MaxChar := 18
+    CzasDzien := FillLeft(CzasDzien, MaxChar, A_Space)
+    CzasTrwaniaValue := floor(A_TickCount / 1000 / 3600) ":" Format("{:02}", round(mod(A_TickCount / 1000 / 60, 60), 0)) " godziny"
+    CzasTrwaniaValue := FillLeft(CzasTrwaniaValue, MaxChar, A_Space)
+	KolorTekstu := "c05ff22 Right"
+    CzasTrwania := MyGui.Add("Text", KolorTekstu, CzasTrwaniaValue)  ; XX & YY serve to auto-size the window.
+    DzienPokaż := MyGui.Add("Text", KolorTekstu, CzasDzien)  ; XX & YY serve to auto-size the window.
+    ;AktualnyCzas := MyGui.Add("Text", "cLime", "XXXXXXXXXXXXXX YY")  ; XX & YY serve to auto-size the window.
+	; Make all pixels of this color transparent and make the text itself translucent (150):
+	WinSetTransColor(MyGui.BackColor " 150", MyGui)
+	SetTimer(UpdateOSD, 1000)
+	UpdateOSD()  ; Make the first update immediate rather than waiting for the timer.
+    MyGui.Title := "CzasDzien" 
+	MyGui.Show("x01150 y800 AutoSize NA")  ; NoActivate avoids deactivating the currently active window, pierwsze dwie zmienne to są koordynaty gdzie jest umieszczony tekst
+UpdateOSD(*) 
+{
+	godzinas := "" A_Hour ":" A_Min ":" A_Sec
+	CzasTrwania.Value := floor(A_TickCount / 1000 / 3600) ":" Format("{:02}", round(mod(A_TickCount / 1000 / 60, 60), 0)) " godziny"
+	;Dzien.Value := A_DD "." A_MM " " A_DDDD
+    ;AktualnyCzas.Value := "          " godzinas
+}
+}
+
+Toogle := 0
+#MaxThreadsPerHotkey 2
+vke2::Shift
+
+
+:X*:soundup::SoundSetVolume "+3" 
+
+text := 
+(
+"
+OK_LayoutBegin
+Name:BEAKL422RU
+1234567890[]
+цыоуьшглпя;=
+хиеаждстнр-
+з.,к/вчмбй––
+<>#$%^&*(){}
+ЦЫОУЬШГЛПЯ:+
+ХИЕАЖДСТНР
+З.,К/ВЧМБЙ––
+x
+x
+x
+x
+1234567890[]
+цыюуъщщлпя;=
+хиёафдстнр-
+э.,к/вчмбй––
+OK_Layout_End
+"
+)
+:*:aaaeaeeii::{
+	global text
+	A_Clipboard := RegExReplace(text, " ", "") ; RegExReplace, służy do usuwania spacji
+}
+
+:X*:metyping::Send "https://youtu.be/Y1UNHgDRFaA?si=eJPRv8gS0llUA4-W"
+
+#HotIf WinActive("Roblox")
+XButton1::y
+XButton2::y
+
+	
+
 /*
 #HotIf WinActive("Minecraft 1.20.1 - Multiplayer (3rd-party Server)")
 MouseMof(x, y) {
@@ -251,6 +344,6 @@ u::{
     Send "/sellall{enter}"
 }
   x y o u '  v g l p q ; =
-  h i e a f  d s t n r -  rtns rtns rstn 
+  h i e a f  d s t n r -
   z . , k /  w c m b j   
 */

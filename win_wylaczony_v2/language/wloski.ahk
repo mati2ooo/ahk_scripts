@@ -1,10 +1,10 @@
 #Include "%A_ScriptDir%"
 #Include ZLANGhelp.ahk
-ą::à
-ę::é
-^u::ù
-^!i::ì ; í
-y::í
-^e::è
-
-;è, é
+^!a::à
+^!e::é
+^!k::è
+^!u::ù
+^!i::ì
+  y::í
+^!o::ò
+^!3::ò
