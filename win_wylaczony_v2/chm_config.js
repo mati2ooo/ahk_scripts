@@ -1,7 +1,7 @@
 config = {
-  "fontSize": 1,
+  "fontSize": 1.2,
   "clickTab": 0,
-  "displaySidebar": true,
+  "displaySidebar": 1,
   "colorTheme": 1,
   "collapseQuickRef": false
 }

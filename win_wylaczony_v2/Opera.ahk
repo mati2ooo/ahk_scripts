@@ -4,25 +4,6 @@ strona(aa) {	; całkowicie czyści clipboard, ale za to działa bardzo szybko!
 	Send aa "{Enter}"
 }
 #HotIf WinActive("ahk_exe opera.exe")
-:X?*:nowou:: Send "^y^'"
-:X?*:nowoy:: Send "^'"
-:?*:nitro:: {
-	MouseGetPos &xpos, &ypos
-	strona("nitrotype.com/login")
-	Loop {
-		wait := PixelGetColor(1033, 357)
-		if (wait == "0x1C98F2") {
-			SendText "matimontfa@gmail.com"
-			mof(1069, 710)
-			SendText haselko	; jest w bezpiecznym miejscu ;3
-			mof(1080, 800)
-			Sleep 1000
-			MsgBox "Logowanie zakończyło się sukcesem", , "T1.5"
-			MouseMove xpos, ypos
-			break
-		}
-	}
-}
 #HotIf WinActive("Szybkie wybieranie – Opera")
 :X?*:monki:: strona("monkeytype.com")
 :X*:gm:: strona("gmail.com")
@@ -103,7 +84,7 @@ pokaz := 0
 	MsgBox pokaz " (0 onzacza, że nie będzie pokazywał statów)", , "T1"
 }
 :X?*:/:: starcik()
-:X*:zyou:: nawache()
+:X*:xyou:: nawache()
 :X?*:tims:: lmof(1276, 186)
 #HotIf WinActive("Garage - Show Off Your Cars | Nitro Type – Opera")
 :X*:klir:: lmof(1563, 229)
@@ -112,7 +93,7 @@ pokaz := 0
 	nadol()
 	Shifto()
 }
-:*:zyou:: {
+:*:xyou:: {
 	lmof(654, 545)
 	nawache()
 }

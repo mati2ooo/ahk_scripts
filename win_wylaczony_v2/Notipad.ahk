@@ -1,13 +1,11 @@
-#HotIf WinActive(Editor_window) 
-;`:: WinClose ; dotyczy Mizara
-~^i:: riload()
-~^s:: riload()
-riload() { 
-	Sleep 10 
+#HotIf WinActive(Editor_window)
+riload() {
+	Sleep 50 
 	MsgBox "Reload of win_v2",, "T0.45"
 	Reload
 }
-
+~^i:: riload()
+~^s:: riload()
 XButton1:: Send "^," ; dalszy boczny guzik myszy
 mysz_poz := 0    ; dla funkcji „mpos”
 :*:mpos::{
@@ -22,17 +20,17 @@ mysz_poz := 0    ; dla funkcji „mpos”
 		SendText "MouseMove xpos, ypos"
 		mysz_poz := 0
 	} }
-:*C:mof:: {
+:*C:mof:: { ; funkcja MOF, klika i tyle
 	dane_myszki := StrSplit(A_Clipboard, ",")
 	wsp_myszki := "Click " dane_myszki[1] "," dane_myszki[2]
-	Send wsp_myszki
+	SendText wsp_myszki
 }
 :*b0C:muf:: {
 	dane_myszki := StrSplit(A_Clipboard, ",")
 	wsp_myszki := "(" dane_myszki[1] "," dane_myszki[2] ")"
 	Send wsp_myszki "{Enter}"
 }
-muf(x, y, z := 20) {	; MUF, głównie stosowany w Robloxie
+muf(x, y, z := 20) {	; MUF, stosowany w Robloxie
 	Click x, y	; Pozycja kursora (natychmiastowo klika)
 	Click x+1, y
 	Sleep z
@@ -42,16 +40,20 @@ muf(x, y, z := 20) {	; MUF, głównie stosowany w Robloxie
 	wsp_myszki := "(" dane_myszki[1] "," dane_myszki[2] ")"
 	Send wsp_myszki
 }
-lmof(x, y, z := 20) {	; funkcja MOF, bardzo użyteczna ;)
+lmof(x, y, z := 20) {	; funkcja LMOF, klika i przywraca kursor na miejsce
 	MouseGetPos &xpos, &ypos
 	Click x, y	; Pozycja kursora (natychmiastowo klika)
 	Sleep z
 	MouseMove xpos, ypos
 } 
-:X*:mmof:: Send "MouseMove " A_Clipboard
-
+:*:mmof::{
+	dane_myszki := StrSplit(A_Clipboard, ",")
+	wsp_myszki := "MouseMove " dane_myszki[1] "," dane_myszki[2]
+	Send wsp_myszki
+}
+ 
 :X*:github:: Run "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Microsoft Edge.lnk https://github.com/Wutus/ff" 
-:*:mess:: { 
+:*:messx:: { 
 	Tresc := InputBox("Podaj treść MsgBoxa", , "w100 h100").Value
 	Czas := InputBox("Podaj ile ma trwać sekund; Kliknij enter, jeśli ma się nie zamykać", , "w100 h130",).Value
 	If (Czas != "") {
@@ -84,6 +86,7 @@ lmof(x, y, z := 20) {	; funkcja MOF, bardzo użyteczna ;)
 }
 
 :X*:ilesys::MsgBox round(A_TickCount / 1000 / 3600, 0) ":" Format("{:02}", round(mod(A_TickCount / 1000 / 60, 60), 0)) " godziny"
+
 
 /*
 :*b0:kolorek:: {

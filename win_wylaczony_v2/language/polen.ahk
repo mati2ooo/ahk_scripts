@@ -1,8 +1,9 @@
 #Include "%A_ScriptDir%"
 #Include ZLANGhelp.ahk
-h::z
-z::h
-^h::^h
+  h::z
+  z::h
 ^!z::ź
 ^!h::ż
-^z::^z
+^+z::Ź
+^h::^h
+^z::^z 

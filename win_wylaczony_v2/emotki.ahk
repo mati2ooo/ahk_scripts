@@ -5,18 +5,19 @@
 		if result = "Cancel" { 
 		MsgBox "Anulowałeś polecenie", , "T0.45"
 		Return
-	} } 
+	} }
 	emotka := InputBox("Podaj hotstringa dla " A_Clipboard,, "W150 H100")
 	if emotka.Result = "Cancel" 
 		MsgBox "Anulowaś polecenie", , "T0.45"
 	else 
-		FileAppend "`n:*:" emotka.Value "::" A_Clipboard, emotki
-	Reload 
-}  
+		FileAppend "`n:*:" emotka.Value "::" A_Clipboard, emotki, "UTF-8"
+	Reload
+}
 :T*:hthin:: :thinking~1:
 :T?*:''::``
 :T*:qq::/
 :T?*:bqq::\
+:T*:bjj::\
 :T?*:tilda::~
 :T*:dilwithit::¯\_(ツ)_/¯
 :?*:ecels::°C
@@ -28,6 +29,7 @@
 :*:kudasai::ください
 :*:shitteiru::知っている
 :*:watashi::私
+
 :*:ethin::🤔
 :*:ejoy::😂
 :*:erolf::🤣
@@ -49,14 +51,13 @@
 :*:ewhat::❓
 :*:ewave::👋
 :*:eangry::😡
-:*:efrozen::🥶 
+:*:ecold::🥶 
 :*:esmug::😨
 :*:esalt::🧂
 :*:eapple::🍎
 :*:eburger::🍔
 :*:edonut::🍩
 :*:ebeer::🍺
-:*:efrozen::🥶
 :*:ehot::🥵
 :*:epump::🎃
 :*:ecash::🤑
@@ -69,7 +70,7 @@
 :*:epray::🙏
 :*:edisa::♿
 :*:epalm::🌴
-:*:esan::☀
+:*:esan::☀️
 :*:eboom::💥
 :*:ebomb::💣
 :*:egift::🎁 
@@ -92,3 +93,31 @@
 :*:edown::👎
 :*:ecrazy::🤪
 :*:emoon::🌘
+:*:evomit::🤮
+:*:eyummy::😋
+:*:etasty::😋
+:*:edevil::😈
+:*:epistol::🔫
+:*:esurp::🤨
+:*:echeese::🧀
+:*:ewink::😉
+:*:eyawn::🥱
+:*:edisg::🥸 ; disguised face 
+:*:egreen::💚
+:*:eskull::💀
+:*:esword::⚔️
+:*:eexh:::face_exhaling:
+:*:enosmoke::🚭
+:*:ecowboy::🤠
+:*:ewalk::🚶
+:*:ecry::😭
+:*:ecandle::🕯️
+:*:eshush::🤫
+:*:esad:::confused: 
+:*:epeach::🍑
+:*:epinch::🤌
+:*:efira::🧯
+:*:ebraun::🧯
+:*:ehide::🫣
+:*:esalut::🫡
+:*:eplis:::point_right::point_left:
