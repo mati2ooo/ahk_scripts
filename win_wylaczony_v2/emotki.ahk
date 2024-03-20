@@ -10,9 +10,9 @@
 	if emotka.Result = "Cancel" 
 		MsgBox "Anulowaś polecenie", , "T0.45"
 	else 
-		FileAppend "`n:*:" emotka.Value "::" A_Clipboard, emotki, "UTF-8"
+		FileAppend "`n:*:" emotka.Value "::" A_Clipboard, "emotki.ahk", "UTF-8"
 	Reload
-}
+}  
 :T*:hthin:: :thinking~1:
 :T?*:''::``
 :T*:qq::/
@@ -35,9 +35,9 @@
 :*:erolf::🤣
 :*:esun::😎
 :*:oky::👌
-:*:esweat::😅
+:*:esweat::😅 ;
 :*:etear::😥
-:*:etir::😢
+:*:etir::😢 ; 
 :*:ethank::🤗
 :*:eharts::🥰
 :*:esmoke::😤
@@ -68,7 +68,7 @@
 :*:eeyes::👀
 :*:eclap::👏
 :*:epray::🙏
-:*:edisa::♿
+:*:edisa::♿ ;
 :*:epalm::🌴
 :*:esan::☀️
 :*:eboom::💥
@@ -107,11 +107,12 @@
 :*:eskull::💀
 :*:esword::⚔️
 :*:eexh:::face_exhaling:
-:*:enosmoke::🚭
+:*:enosmoke::🚭 ;  
 :*:ecowboy::🤠
 :*:ewalk::🚶
 :*:ecry::😭
 :*:ecandle::🕯️
+:*:ekindle::🕯️
 :*:eshush::🤫
 :*:esad:::confused: 
 :*:epeach::🍑
@@ -120,4 +121,14 @@
 :*:ebraun::🧯
 :*:ehide::🫣
 :*:esalut::🫡
-:*:eplis:::point_right::point_left:
+:*:eplis::👉👈
+:*:escream::😱
+:*:escary::😱
+:*:eplead::🥺
+:*:eplease::🥺
+:*:ewine::🍷
+:C*:eALLA::{
+	czy := MsgBox("Na pewno?",, "4")
+	If czy = "Yes"
+		Send "🤔😂🤣😎👌😅😥😢🤗🥰😤🗿🍟💯🔥❤️🤡❓👋😡🥶😨🧂🍎🍔🍩🍺🥵🎃🤑⛏️💪👍😏👀👏🙏♿🌴☀️💥💣🎁💩🍹🐦🖕🌌😘🤓👟👈👉✨😁🥳🚗👎🤪🌘🤮😋😈🔫🤨🧀😉🥱🥸💚💀⚔️🚭🤠🚶😭🕯️🤫🍑🧯😱🥺🍷{Enter}"
+}

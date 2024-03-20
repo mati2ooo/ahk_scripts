@@ -34,7 +34,8 @@ OdpalEdytor(plik) {
 	Run '"' Edytor '" "' skrypt plik ".ahk" '"'  ; TEGO TRZEBA PILNOWAĆ, TO DLA NAS ZŁOTO
 } 
 :XC*:winw:: wina() 
-:XC*:wniw:: wina() 
+:XC*:wniw:: wina()
+:XC*:xyou:: wina() 
 :C*:nsln::{  ; winw for QWERTY
 	wina()
 	MsgBox "Ten, Qwerty masz włączone",, "4096 T3"  
@@ -62,6 +63,7 @@ LaunchLang(jezyk1) {
 :X*:prou:: LaunchLang("ruski")
 :X*:pruss::LaunchLang("ruski")
 :X*:pfre::LaunchLang("french") 
+:X*:pswed::LaunchLang("swedish") 
 :X*:pzdun::Run '"' Edytor '" "' skrypt language "ZLANGhelp.ahk" '"' 
 
 :X*:cmda:: Run "cmd.exe"  
@@ -89,7 +91,6 @@ TekstCMD(Tekst, Time := 0) {
 	WinMove(850, 100,,, "win_wylaczony_v2")
 }
 
-:X*:diz::Run "C:\Users\Grzegorz\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Discord Inc\Discord.lnk"
 :X*:dajtytul:: A_Clipboard := "#HotIf WinActive(`"" WinGetTitle("A") "`")"
 
 launch_time := A_Hour ":" A_Min ; e.g "via BEAKL at 15:49"
@@ -160,7 +161,7 @@ gemail(cyfra) {
 :X*:heker::Send "``````ahk{enter 2}``````{Up}" 
 :X*:vv:: Send "^k"	; robi Ctrl + V (wersja Beakl) 
 :X*:klipi::Msgbox A_Clipboard, "What's in Clipboard"  
-:T?b0*:matimon::tfa@gmail.com 
+:T?b0*:matimon::tfa@gmail.com  
 :T?b0*:mat.k::luczyk@gmail.com
 :X?*:dyskgoogle::Send "https://drive.google.com/drive/u/0/my-drive?hl=pl{enter}"
 :X*:volium::MsgBox "Master volume is at " Round(SoundGetVolume(), 0) " percent." 
@@ -171,6 +172,7 @@ gemail(cyfra) {
     if folder != "" 
     Run folder.value 
 }
+:X*:elol::Run "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Riot Games\League of Legends.lnk"
 
 wyscigii(show, average, count){
 	ScriptLong := StrLen(A_ScriptName)
@@ -223,7 +225,9 @@ Shifto(tool := 0) {
 	key := InputHook("L1, *")
 	key.Start()
 	key.Wait()
-	Send key.Input
+	if key.Input = "-"
+		SendText "-" ; wyjątekaeae. -eaea. -eaee. Iiiaeiea. !,,iea ,iea. !
+	else Send key.Input
 	 if (tool = 0)
 	MyGui.Destroy()
 	Send "{Shift up}"
@@ -232,15 +236,17 @@ ShiftoT() {
 	CoordMode "ToolTip", "Screen"
 	ToolTip "Shift ON", 690, 545
 	Send "{Shift down}"
-	key := InputHook("L1, *")
+	key := InputHook("L1, *") 
 	key.Start()
-	key.Wait()
-	Send key.Input
+	key.Wait() ;
+	if key.Input = "," ; konieczny warunek, bo inaczej nie działa
+		SendText "!"
+	else Send key.Input
 	ToolTip
 	Send "{Shift up}"
 }
 #MaxThreadsPerHotkey 2 
-RShift:: ShiftoT()
+;RShift:: ShiftoT()
 :XB0*?:. ::Shifto(1)
 :*:––:: —   ; tak zwana pauza
 
@@ -376,8 +382,180 @@ OK_Layout_End
 XButton1::y
 XButton2::y
 
-	
+:CX*:beakL::Send "(Balanced Effortless Advanced Keyboard Layout)"
 
+:?*:pokę::{
+	Send "@Pokétwo"
+	Sleep 300
+	Send "{tab}h{enter}"
+	Sleep 300 
+	Send "@Pokétwo"
+	Sleep 300
+	Send "{tab}c "
+}
+;x::WinSetStyle "-0x595959", "A" ; 441, 256, "0x595959"
+; 
+; Boosteria, eloking, myboosting.gg
+:*:shapoba::chapeau bas ; 
+:X*:elol::Run "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Riot Games\League of Legends.lnk"
+
+:*:calca::{
+	a := 2
+	Msgbox "Twój wynik to jest: " a
+}
+
+:*:aaEhhi::{
+	Loop {
+	tyle := 1
+	BlockInput 1 ; Bez BlockInput 0 NIE URUCHAMIAJ (na końcu skryptu)
+	MouseGetPos &xpos, &ypos
+	First := WinGetTitle("A")
+	WinActivate("ahk_exe Discord.exe")
+	Send "Test{Enter}"
+	Sleep tyle
+	WinActivate(First)
+	MouseMove xpos, ypos
+	BlockInput 0
+	Sleep 110000
+	}
+}
+nawache() {
+	ile := InputBox("Ile wyścigów chcesz porobić?")
+    if ile.result = "Cancel" { 
+		MsgBox "Anulowałeś polecenie", , "T0.45"
+		Return
+	} 
+	start := [A_Hour, A_Min, A_Sec]
+	Loop {
+		if (A_Index > ile.value) {
+			Loop {
+				if PixelSearch(&Px, &Py, 609, 449, 609, 450, 0x303343, 5) {
+					odcinek := [A_Hour, A_Min, A_Sec]
+					czas := odcinek[1] * 3600 + odcinek[2] * 60 + odcinek[3] - (start[1] * 3600 + start[2] * 60 + start[3])
+					średnio := floor(czas / ile.value)
+					if (czas > 60)
+						czas := floor(czas / 60) ":" Format("{:02}", ceil(mod(czas, 60)))
+					else czas := "0:" Format("{:02}", czas)
+					if (średnio > 60)
+						średnio := floor(średnio / 60) ":" Format("{:02}", ceil(mod(średnio, 60)))
+					else średnio := "0:" Format("{:02}", średnio)
+					MsgBox "Finalnie wykonałeś " ile.value " wyścigów. W sumie Ci to zajęło: " czas " minut, średnio na wyścig: " średnio " minut"
+					return
+				} } }
+		licz := A_Index - 1
+		Loop {
+			if PixelSearch(&Px, &Py, 609, 449, 609, 450, 0x303343, 5) {
+				;starcik(licz, ile.value, start)
+				Sleep 25000
+				break
+} } } } 
+
+
+#MaxThreadsPerHotkey 2
+:*:aa/::{ ; AutoClicker na przełącznik
+	Static Toggle := false
+	Toggle := !Toggle
+	SetTimer(Click, Toggle ? 80 : 0)
+}
+
+:*:ffy::{
+	CoordMode("Mouse", "Screen")
+	MouseGetPos &xpos, &ypos
+	Click 270, 20
+	zzz := 500
+	oo := 1.4
+	WinWait("OnTopReplica")
+	WinMove 458, 140, 790 * oo, 596 * oo, "OnTopReplica"
+	pos := [540, 380]
+	Click pos[1], pos[2], "Right"
+	Sleep zzz
+	MouseMove pos[1] + 10, pos[2] + 10
+	Sleep zzz
+	MouseMove pos[1] + 200, pos[2] + 40
+	Sleep zzz
+	Click pos[1] + 630, pos[2] + 70
+	Sleep zzz
+	Click pos[1], pos[2], "Right"
+	Sleep zzz
+	Click pos[1] + 10, pos[2] + 160
+	Sleep zzz
+	Click
+	Sleep zzz/5
+	Click 405, 304
+}
+:X*:iiif::WinMove 458, 180, 790 * 1.4, 596 * 1.4, "OnTopReplica"
+StartRace() {
+	if PixelSearch(&Px, &Py, 417, 376, 417, 376, 0x303343, 0) {
+		Send "{Enter}"
+		Shifto()
+	}
+}
+#HotIf WinActive("Race Now - 100% Free | Nitro Type — LibreWolf")
+wyscigi(show, average, count){
+	ScriptLong := StrLen(A_ScriptName)
+	goBack := WinActive("A")
+	Times := 18
+	MyGui := Gui()
+	MyGui.Opt("AlwaysOnTop ToolWindow")
+	MyGui.SetFont("s18")
+	Message1 := "Time of the race: " show " seconds; Average: " average " seconds; " 
+	Message2 := count " races in total"
+	MyGui.Add("Text", "BackgroundTrans x15 y10 R2", Message1) ; podaj nazwe skryptu
+	MyGui.Add("Text", "BackgroundTrans x15 y40 R2", Message2) ; podaj nazwe skryptu
+	MyGui.BackColor := "0x086315"
+	MyGui.Show
+	MyGui.Move(700, 500, 700, 104)
+	WinSetStyle "-0xC00000", "A"
+	WinSetTransparent 120, "A"
+	Sleep 30
+	WinActivate(goBack)
+	Sleep 5000
+	MyGui.Destroy()
+	}
+:*:iixxf::{
+	CoordMode("Pixel", "Screen")
+	count := 0
+	total := 0
+	start := A_TickCount - 40000 ; 41, 74, "0x1C99F4"
+	Cord := [469, 192, 1551, 1021]
+	Kolor := [0x1C99F4, 0xD62F3A]
+	Loop { 
+	blue1 := PixelSearch(&Px, &Py, Cord[1], Cord[2], Cord[3], Cord[4], Kolor[1], 0)
+	red1 := PixelSearch(&Px, &Py, Cord[1], Cord[2], Cord[3], Cord[4], Kolor[2], 0)
+	Sleep 200
+	blue2 := PixelSearch(&Px, &Py, Cord[1], Cord[2], Cord[3], Cord[4], Kolor[1], 0)
+	red2 := PixelSearch(&Px, &Py, Cord[1], Cord[2], Cord[3], Cord[4], Kolor[2], 0)
+	Sleep 200
+	
+	end := A_TickCount
+	if blue1 = 0 && red1 = 0 && blue2 = 0 && red2 = 0 {
+		count += 1
+		Send "{Ctrl down}{U down}{U up}{Ctrl up}" 
+		show := Round((end - start)/ 1000, 3)
+		total += show
+		average := Round(total / count, 3) 
+		start := A_TickCount ; 34, 377, "0x086315"
+		;MsgBox "Time of the race: " show " seconds; Average: " average " seconds; " count " races in total",, "4096 T5"
+		wyscigi(show, average, count)
+		Shifto()
+		Sleep 23000
+	}}}
+
+#HotIf WinActive("ahk_exe msedge.exe") 
+~a::StartRace()
+~e::StartRace()
+~space::StartRace() 
+#HotIf WinActive("Vampire Survivors") 
+z::Click 800, 573
+.::Click 800, 477
+,::Click 800, 311
+a::Click 800, 759 
+k::Click 800, 711
+x::Escape
+	
+#HotIf
+#InputLevel 0
+:*:tata::haha ; 
 /*
 #HotIf WinActive("Minecraft 1.20.1 - Multiplayer (3rd-party Server)")
 MouseMof(x, y) {
